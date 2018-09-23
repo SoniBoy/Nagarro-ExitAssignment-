@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+
+
+<form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" >
+  <mat-form-field>
+    <mat-select  [(ngModel)]="selectedCondition" [ngModelOptions]="{standalone: true}" placeholder="Select Book Condition" >
+
+        <mat-option value="New">New</mat-option >
+        <mat-option value="Almost New">Almost New</mat-option>
+        <mat-option value="Slight Damage">Slight Damage</mat-option>
+        <mat-option value="Worn">Worn</mat-option>
+        <mat-option value="No Filter">No Filter</mat-option>
+
+      </mat-select>
+
+</mat-form-field>
+
+
+  <mat-form-field>
+      <mat-select [(ngModel)]="selectedPrice" [ngModelOptions]="{standalone: true}" placeholder="Select Price Range">
+
+          <mat-option value= "less than 250">less than 250</mat-option>
+          <mat-option value="250-500">250-500</mat-option>
+          <mat-option value="500-1000">500-1000</mat-option>
+          <mat-option value="greater than 1000">greater than 1000</mat-option>
+          <mat-option value="No Filter">No Filter</mat-option>
+
+        </mat-select>
+  </mat-form-field>
+
+</form>
+
+</nav>
+
+<br>
+
+<p *ngIf="books.length===0 ; else booksFound">Sorry No Books Found</p>
+
+<ng-template #booksFound>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card-columns">
+          <div class="card" style="width: 18rem;" *ngFor="let book of books | filterSearch : searchText  | filterCondition : selectedCondition | filterPrice : selectedPrice ">
+             <app-list-item [item]="book"></app-list-item>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-template>

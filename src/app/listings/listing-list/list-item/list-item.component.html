@@ -1,0 +1,10 @@
+<img class="card-img-top" [src]="item.bookImageUrl" alt="Card image cap" width="286" height="180">
+  <div class="card-body">
+    <h5 class="card-title">{{item.bookName}} </h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{item.authorName}} </h6>
+    <hr>
+    <p class="card-text">Rs. {{item.bookPrice}} </p>
+    <p class="card-text">condition: {{item.bookCondition}} </p>
+    <button class="btn btn-success" (click)="getItem(item.bookId)">See More</button>
+
+  </div>

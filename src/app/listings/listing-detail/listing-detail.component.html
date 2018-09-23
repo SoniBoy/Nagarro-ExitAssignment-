@@ -1,0 +1,18 @@
+<p *ngIf="book==null ; else booksFound">Sorry No Books Found</p>
+
+<ng-template #booksFound>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" alt="Card image cap" width="286" height="180">
+    <div class="card-body">
+      <h5 class="card-title">{{book.bookName}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{book.authorName}} </h6>
+      <hr>
+      <p class="card-text">Rs. {{book.bookPrice}} </p>
+      <p class="card-text">condition: {{book.bookCondition}} </p>
+      <p class="card-text">seller: {{book.user.userName}} </p>
+      <button class="btn btn-success" (click)="addToWishlist(book.bookId)">Add To Wishlist</button>
+
+    </div>
+  </div>
+
+</ng-template>
