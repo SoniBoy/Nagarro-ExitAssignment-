@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const db = new Sequelize('shopdb' , 'shopper' , 'shoppass' , {
 
-  host: 'db4free.net' ,
+  host: 'localhost' ,
   dialect: 'mysql' ,
   operatorsAliases: false,
 
